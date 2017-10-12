@@ -3,8 +3,10 @@
 <ul id="colorList" ng-repeat="color in store.brickColors">
   <li ng-if="store.bricks[color]">
     {{color}}
+    <ul>
     <div ng-repeat="brick in store.bricks[color]">
-        <span>{{brick.quantity}}</span>
+      <li>{{brick.quantity}}</li>
     </div>
+  </ul>
   </li>
 </ul>
