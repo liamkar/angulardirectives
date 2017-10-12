@@ -1,2 +1,5 @@
 <h1 id="storeHeading">{{store.name}}</h1>
 <p id="brickColors">{{store.brickColors.length}}</p>
+<ul id="colorsList" ng-repeat="color in store.brickColors">
+  <li>{{color}}</li>
+</ul>
