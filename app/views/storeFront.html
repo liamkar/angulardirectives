@@ -1,17 +1,19 @@
 <h1 id="storeHeading">{{store.name}}</h1>
 <p id="brickColors">{{store.brickColors.length}}</p>
-<ul ng-repeat="color in store.brickColors">
-  <li id="color-{{color}}" ng-if="store.bricks[color]">
+<ul id="colorList">
+  <li id="color-{{color}}" class="row" ng-repeat="(color, details) in store.bricks">
     {{color}}
-    <section id="colorList" ng-repeat="brick in store.bricks[color]">
-      <ul ng-class="{'low-stock': brick.quantity < 10, 'coming-soon': brick.quantity < 5}">
-      <li>Size:</li>
-      <li>Quantity:{{brick.quantity}}</li>
-      <li>Price:{{brick.price}}</li>
-      </ul>
-      <button ng-click="store.buy(brick)">Buy</button>
-      <button ng-click="store.return(brick)">Return</button>
-    </section>
+  <ul>
+    <li class="col-sm-3 well brick-{{size}}" ng-class="{'low-stock': info.quantity < 10}" ng-repeat="(size, info) in details">
 
-  </li>
+      <p class="size">Size: {{size}}</p>
+      <p class="quantity">Quantity:{{info.quantity}}</p>
+      <p class="price">Price:{{info.price}}</p>
+      <p ng-if="info.quantity < 5" class="coming-soon">More on the way!</p>
+      <button class ="buyButton" ng-click="store.buy(color, size)">Buy</button>
+      <button class ="returnButton" ng-click="store.return(color, size)">Return</button>
+    </li>
+
+  </ul>
+</li>
 </ul>
