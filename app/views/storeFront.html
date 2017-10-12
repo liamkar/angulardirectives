@@ -9,7 +9,9 @@
       <li>Quantity:{{brick.quantity}}</li>
       <li>Price:{{brick.price}}</li>
       </ul>
-    </sectoin>
+      <button ng-click="store.buy(brick)">Buy</button>
+      <button ng-click="store.return(brick)">Return</button>
+    </section>
 
   </li>
 </ul>
