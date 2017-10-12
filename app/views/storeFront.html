@@ -1,14 +1,15 @@
 <h1 id="storeHeading">{{store.name}}</h1>
 <p id="brickColors">{{store.brickColors.length}}</p>
-<ul id="colorList" ng-repeat="color in store.brickColors">
-  <li ng-if="store.bricks[color]">
+<ul ng-repeat="color in store.brickColors">
+  <li id="color-{{color}}" ng-if="store.bricks[color]">
     {{color}}
-    <ul>
-    <div ng-repeat="brick in store.bricks[color]">
+    <section id="colorList" ng-repeat="brick in store.bricks[color]">
+      <ul ng-class="{'low-stock': brick.quantity < 10, 'coming-soon': brick.quantity < 5}">
       <li>Size:</li>
       <li>Quantity:{{brick.quantity}}</li>
       <li>Price:{{brick.price}}</li>
-    </div>
-  </ul>
+      </ul>
+    </sectoin>
+
   </li>
 </ul>
